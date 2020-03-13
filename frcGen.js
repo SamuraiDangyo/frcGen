@@ -19,7 +19,7 @@ function frcGen(idPositionNumber) {
     for (let i = 0; i <= 7; i++) if (nums[i] == 4){rookLeft  = i; break;}
     for (let i = 7; i >= 0; i--) if (nums[i] == 4){rookRight = i; break;}
 
-    let rights = String.fromCharCode(65 + rookLeft) + String.fromCharCode(65 + rookRight);
+    const rights = String.fromCharCode(65 + rookLeft) + String.fromCharCode(65 + rookRight);
 
     return `${rights}${rights.toLowerCase()}`;
   }
@@ -35,24 +35,24 @@ function frcGen(idPositionNumber) {
   }
 
   function genBoard() {
-    let N     = Math.min(959, Math.max(0, parseInt(idPositionNumber, 10)));
+    const N   = Math.min(959, Math.max(0, parseInt(idPositionNumber, 10)));
     let board = [0, 0, 0, 0, 0, 0, 0, 0];
 
     // Step a
-    let N2 = parseInt(N / 4, 10);
-    let B1 = N % 4;
+    const N2 = parseInt(N / 4, 10);
+    const B1 = N % 4;
 
     board[[1, 3, 5, 7][B1]] = 3;
 
     // Step b
-    let N3 = parseInt(N2 / 4, 10);
-    let B2 = N2 % 4;
+    const N3 = parseInt(N2 / 4, 10);
+    const B2 = N2 % 4;
 
     board[[0, 2, 4, 6][B2]] = 3;
 
     // Step c
-    let N4 = parseInt(N3 / 6, 10);
-    let Q  = N3 % 6;
+    const N4 = parseInt(N3 / 6, 10);
+    const Q  = N3 % 6;
 
     let freeSquares = 0;
     for (let i = 0; i <= 7; i++) {if ( ! board[i]) {freeSquares++; if (freeSquares == Q + 1) {board[i] = 5; break;}}}

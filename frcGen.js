@@ -1,5 +1,5 @@
 /**
-* frcGen, a Chess960 starting position generator
+* frcGen, a Chess960 fen generator by index number in JavaScript
 * Copyright (C) 2020 Toni Helminen
 * GPLv3
 **/
@@ -35,10 +35,10 @@ function frcGen(idPositionNumber) {
   }
 
   function genBoard() {
-    const N   = Math.min(959, Math.max(0, parseInt(idPositionNumber, 10)));
     let board = [0, 0, 0, 0, 0, 0, 0, 0];
 
     // Step a
+    const N  = Math.min(959, Math.max(0, parseInt(idPositionNumber, 10)));
     const N2 = parseInt(N / 4, 10);
     const B1 = N % 4;
 

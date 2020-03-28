@@ -12,26 +12,26 @@ function frcGen(idPositionNumber) {
     return {2: "N", 3: "B", 4: "R", 5: "Q", 6: "K"}[num];
   }
 
-  function castlingRights(nums) {
+  function castlingRights(board) {
     let rookLeft  = 0;
     let rookRight = 0;
 
-    for (let i = 0; i <= 7; i++) if (nums[i] == 4){rookLeft  = i; break;}
-    for (let i = 7; i >= 0; i--) if (nums[i] == 4){rookRight = i; break;}
+    for (let i = 0; i <= 7; i++) if (board[i] == 4){rookLeft  = i; break;}
+    for (let i = 7; i >= 0; i--) if (board[i] == 4){rookRight = i; break;}
 
     const rights = String.fromCharCode(65 + rookLeft) + String.fromCharCode(65 + rookRight);
 
     return `${rights}${rights.toLowerCase()}`;
   }
 
-  function makeFen(nums) {
+  function makeFen(board) {
     let str = "";
 
-    for (let i = 0; i <= 7; i++) str += num2Piece(nums[i]).toLowerCase();
+    for (let i = 0; i <= 7; i++) str += num2Piece(board[i]).toLowerCase();
     str += "/pppppppp/8/8/8/8/PPPPPPPP/";
-    for (let i = 0; i <= 7; i++) str += num2Piece(nums[i]);
+    for (let i = 0; i <= 7; i++) str += num2Piece(board[i]);
 
-    return `${str} w ${castlingRights(nums)} - 0 1`;
+    return `${str} w ${castlingRights(board)} - 0 1`;
   }
 
   function genBoard() {
